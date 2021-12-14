@@ -1,0 +1,22 @@
+{
+  "name": "gitappan",
+  "version": "0.0.1",
+  "description": "Package to manage GIT repositories.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/narasimhakamath/gitappan.git"
+  },
+  "keywords": [
+    "git"
+  ],
+  "author": "Narasimha Kamath",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/narasimhakamath/gitappan/issues"
+  },
+  "homepage": "https://github.com/narasimhakamath/gitappan#readme"
+}
