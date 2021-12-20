@@ -12,4 +12,11 @@ const getCurrentCommitID = () => {
 	}
 };
 
-module.exports = {getCurrentCommitID};
+const isGITRepository = () => {
+	const gitResponse = process.execSync('git rev-parse --is-inside-work-tree');
+	if(!gitResponse.toString())
+		return false;
+	return true;
+}
+
+module.exports = {getCurrentCommitID, isGITRepository};
