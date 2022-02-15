@@ -1,1 +1,1 @@
-# gitappan is a git management package manager.
+# gitappan is a git manager using NodeJS.
