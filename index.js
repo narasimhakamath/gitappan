@@ -1,5 +1,6 @@
 const fs = require('fs');
-const process = require('child_process');
+const process = require('process');
+const command = require('child_process');
 const path = require('path');
 
 class GIT {
@@ -8,6 +9,7 @@ class GIT {
 			throw new Error('Invalid directory.');
 		if(!this._isGITRepository(directoryPath))
 			throw new Error('Invalid GIT repository.');
+		process.chdir(directoryPath);
 		this._directoryPath = directoryPath;
 	}
 
@@ -20,7 +22,11 @@ class GIT {
 	}
 
 	getLastCommitID = () => {
-		return process.execSync('git rev-parse HEAD').toString().trim();
+		return command.execSync(`git rev-parse HEAD`).toString().trim();
+	}
+
+	getLastCommitAuthor = () => {
+		return command.execSync(`git log -1 --pretty=format:'%an'`).toString().trim();
 	}
 }
 
