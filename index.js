@@ -25,7 +25,7 @@ class GIT {
 		return command.execSync(`git rev-parse HEAD`).toString().trim();
 	}
 
-	getLastCommitAuthor = () => {
+	getLastCommitAuthorName = () => {
 		return command.execSync(`git log -1 --pretty=format:'%an'`).toString().trim();
 	}
 }
