@@ -1,22 +1,18 @@
-const process = require('child_process');
+const fs = require('fs');
+const process = require('process');
+const path = require('path');
 
-const getCurrentCommitID = () => {
-	try {
-		const lastGITCommitID = process.execSync('git rev-parse HEAD');
-		if(!lastGITCommitID)
-			throw new Error('Could not fetch the commit ID.');
-
-		return lastGITCommitID.toString();
-	} catch(e) {
-		console.log(e);
+class GIT {
+	constructor(directoryPath) {
+		if(!this._isValidDirectory(directoryPath))
+			throw new Error('Invalid directory');
 	}
-};
 
-const isGITRepository = () => {
-	const gitResponse = process.execSync('git rev-parse --is-inside-work-tree');
-	if(!gitResponse.toString())
-		return false;
-	return true;
+	_isValidDirectory = directoryPath => {
+		return fs.existsSync(directoryPath);
+	}
 }
 
-module.exports = {getCurrentCommitID, isGITRepository};
+const Gitappan = (directoryPath) => new GIT(directoryPath);
+
+module.exports = Gitappan;
