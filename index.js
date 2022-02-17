@@ -5,11 +5,18 @@ const path = require('path');
 class GIT {
 	constructor(directoryPath) {
 		if(!this._isValidDirectory(directoryPath))
-			throw new Error('Invalid directory');
+			throw new Error('Invalid directory.');
+
+		if(!this._isGITRepository(directoryPath))
+			throw new Error('Invalid GIT repository.');
 	}
 
 	_isValidDirectory = directoryPath => {
 		return fs.existsSync(directoryPath);
+	}
+
+	_isGITRepository = directoryPath => {
+		return fs.existsSync(path.join(directoryPath, '.git'));
 	}
 }
 
