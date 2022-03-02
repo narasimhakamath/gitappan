@@ -23,6 +23,9 @@ const commit ID = gitDir.getLastCommitID();
 
 # Get the last GIT commit's author
 const author = gitDir.getLastCommitAuthorName();
+
+# Get the last GIT commit details like ID, author's name, and author's mail address
+const commit = gitDir.getLastCommit();
 ```
 
 ## Contributing
