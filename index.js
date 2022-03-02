@@ -28,6 +28,18 @@ class GIT {
 	getLastCommitAuthorName = () => {
 		return command.execSync(`git log -1 --pretty=format:'%an'`).toString().trim();
 	}
+
+	getLastCommit = () => {
+		const gitLog = command.execSync(`git log -1`).toString().trim().split(' ');
+		if(!gitLog)
+			return null;
+
+		return {
+			commitID: gitLog[1].split('\n')[0],
+			authorName: `${gitLog[2]} ${gitLog[3]}`,
+			authorMail: gitLog[4].split(/[<>]+/)[1]
+		};
+	}
 }
 
 const Gitappan = (directoryPath) => new GIT(directoryPath);
